@@ -158,7 +158,8 @@ const MAXHRS_IN_MONTH=160;
     let empWage = calcDailyWage(totalEmpHrs);
     console.log("Total Days: " + totalWorkingDays + "\nTotal Hours: " + totalEmpHrs +"\nEmployee Wage: " + empWage);
 }
-//UC7
+//Array Helper Functions
+//UC7A
 const IS_PARTTIME=1;
 const IS_FULLTIME=2;
 const PART_TIMEHOURS=4;
@@ -171,23 +172,23 @@ const MAX_HRS_INMONTH=160;
     {
         switch(empCheck)
         {
-            case IS_PART_TIME:
-                return PART_TIME_HOURS;
-            case IS_FULL_TIME:
-                return FULL_TIME_HOUR;
+            case IS_PARTTIME:
+                return PART_TIMEHOURS;
+            case IS_FULLTIME:
+                return FULL_TIMEHOUR;
             default:
                 return 0;
         }
     }
     function calcDailyWage(empHrs)
     {
-        return empHrs * WAGE_PER_HOUR;
+        return empHrs * WAGE_PERHOUR;
     }
     let empHrs=0;
     let totalEmpHrs=0;
     let totalWorkingDays=0;
     let empDailyWageArr=new Array();
-   while(totalEmpHrs<= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
+   while(totalEmpHrs<= MAX_HRS_INMONTH && totalWorkingDays < NUM_OF_WORKINGDAYS)
     {
         totalWorkingDays++;
         let empCheck=Math.floor(Math.random() * 10) % 3;
@@ -196,7 +197,7 @@ const MAX_HRS_INMONTH=160;
         empDailyWageArr.push(calcDailyWage(empHrs));
     }
     let empWage = calcDailyWage(totalEmpHrs);
-    console.log("Total Days: " + totalWorkingDays + "\nTotal Hours: " + totalEmpHrs +"\nEmployee Wage: " + empWage);
+    console.log("UC6 - Total Days: " + totalWorkingDays + "\nTotal Hours: " + totalEmpHrs +"\nEmployee Wage: " + empWage);
 
     let totEmpWage=0;
     function sum(dailyWage)
@@ -204,11 +205,20 @@ const MAX_HRS_INMONTH=160;
         totEmpWage += dailyWage;
     }
     empDailyWageArr.forEach(sum);
-    console.log("\nTotal Days: " + totalWorkingDays + "\nTotal Hours: " + totalEmpHrs +"\nEmployee Wage: " + totEmpWage);
+    console.log("\nUC7A - Total Days: " + totalWorkingDays + "\nTotal Hours: " + totalEmpHrs +"\nEmployee Wage: " + totEmpWage);
 
     function totalWages(totalWage,dailyWage){
         return totalWage + dailyWage;
     }
-    console.log("Emp Wage With Reduce: "+empDailyWageArr.reduce(totalWages,0));
+    console.log("UC7A - Emp Wage With Reduce: "+empDailyWageArr.reduce(totalWages,0));
+
+    let dailyCntr = 0;
+    function mapDayWithWage(dailyWage){
+        dailyCntr++;
+        return dailyCntr + " = " + dailyWage;
+    }
+    let mapDayWithWageArr = empDailyWageArr.map(mapDayWithWage);
+    console.log("\n UC7B - Daily Wage Map");
+    console.log(mapDayWithWageArr);
 
 }

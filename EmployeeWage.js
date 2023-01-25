@@ -58,3 +58,32 @@ const WAGEPERHOUR=20;
     let empWage=empHrs*WAGE_PER_HOUR;
     console.log("Hours: " +empHrs+ "\nEmployee Wage: " + empWage);
 }
+//UC4
+const isparttime=1;
+const isfulltime=2;
+const parttimehours=4;
+const fulltimehours=8;
+const wageperhour=20;
+const numberofworlingdays=20;
+{
+    function getWorkingHours(empCheck)
+    {
+        switch(empCheck)
+        {
+            case isparttime:
+                return parttimehours;
+            case isfulltime:
+                return fulltimehours;
+            default:
+                return 0;
+        }
+    }
+    let totalEmpHrs=0;
+    for(let day=0; day<numberofworlingdays; day++)
+    {
+        let empCheck=Math.floor(Math.random() * 10) % 3;
+        totalEmpHrs += getWorkingHours(empCheck);
+    }
+    let empWage=totalEmpHrs * wageperhour;
+    console.log("Total Hours: " + totalEmpHrs +"\nEmployee Wage: " + empWage);
+}

@@ -351,7 +351,6 @@ class EmployeePayrollData
         return "id=" +this.id+", name="+this.name+", salary="+this.salary;
     }
 }
-
 let employeePayrollData=new EmployeePayrollData(1, "charu", 30000);
 console.log(employeePayrollData.toString());
 employeePayrollData.id=0;
